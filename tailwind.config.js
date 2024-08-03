@@ -9,9 +9,14 @@ export default {
         pastelYellow: '#FFF5B1',
         limeGreen: '#B8DDA6',
         lightBrown: '#C2A387',
+        brown: '#5C4033',
+        lightIvory: '#FAF9F6',
       },
       fontFamily: {
         'GreatVibes': ['GreatVibes', 'cursive'],
+        'Roboto': ['Roboto', 'sans-serif'],
+        'DancingScript': ['DancingScript', 'cursive'],
+
       },
       keyframes: {
         beat: {

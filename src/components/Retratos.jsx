@@ -12,18 +12,41 @@ import Foto7 from "../assets/Retratos/7.jpg";
 import Foto8 from "../assets/Retratos/8.jpg";
 import Foto9 from "../assets/Retratos/9.jpg";
 import Foto10 from "../assets/Retratos/10.jpg";
+import LottieAnimation from './Animations/LottieAnimation';
+import animationData3 from '../assets/animations/camara.json';
 
 const Retratos = () => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    fade: true,
-    cssEase: 'linear'
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ]
   };
 
   const images = [
@@ -41,12 +64,24 @@ const Retratos = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-ivoryWhite p-8">
-      <h1 className="text-4xl font-GreatVibes text-emeraldGreen mb-8">Retratos de Nuestro Amor</h1>
-      <div className="w-full md:w-3/4 lg:w-1/2">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white p-8">
+      <h1 className="text-4xl font-GreatVibes text-emeraldGreen mb-4">Retratos de Nuestro Amor</h1>
+      <div className="mb-12 flex flex-col items-center justify-center">
+            <LottieAnimation
+              animationData={animationData3}
+              width={100}
+              height={100}
+              startFrame={50}
+              endFrame={150}
+            />
+          </div>
+      <p className="text-2xl font-DancingScript text-lightBrown mb-8 text-center">
+        Un minuto, un segundo, un instante que queda en la eternidad
+      </p>
+      <div className="w-full md:w-11/12 lg:w-10/12">
         <Slider {...settings}>
           {images.map((image, index) => (
-            <div key={index}>
+            <div key={index} className="px-2">
               <img src={image} alt={`Retrato ${index + 1}`} className="w-full rounded-lg shadow-lg" />
             </div>
           ))}

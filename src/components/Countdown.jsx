@@ -28,28 +28,25 @@ const Countdown = () => {
   });
 
   return (
-    <div className="text-2xl text-lightBrown">
+    <div className="bg-lightIvory border-t-4 border-b-4 border-brown py-8 text-center">
+      <h2 className="text-5xl font-GreatVibes text-lightBrown">Falta</h2>
       {timeLeft.days !== undefined ? (
-        <div className="flex space-x-4">
-          <div>
-            <span className="block text-4xl">{timeLeft.days}</span>
-            <span>Días</span>
+        <div className="flex justify-center mt-4 space-x-8 text-emeraldGreen">
+          <div className="text-center">
+            <span className="block text-6xl font-DancingScript">{timeLeft.days}</span>
+            <span className="block text-lg text-lightBrown font-Roboto">Días</span>
           </div>
-          <div>
-            <span className="block text-4xl">{timeLeft.hours}</span>
-            <span>Horas</span>
+          <div className="text-center">
+            <span className="block text-6xl font-DancingScript">{timeLeft.hours}</span>
+            <span className="block text-lg text-lightBrown font-Roboto">Hs</span>
           </div>
-          <div>
-            <span className="block text-4xl">{timeLeft.minutes}</span>
-            <span>Minutos</span>
-          </div>
-          <div>
-            <span className="block text-4xl">{timeLeft.seconds}</span>
-            <span>Segundos</span>
+          <div className="text-center">
+            <span className="block text-6xl font-DancingScript">{timeLeft.minutes}</span>
+            <span className="block text-lg text-lightBrown font-Roboto">Min</span>
           </div>
         </div>
       ) : (
-        <span>El evento ya ha comenzado!</span>
+        <span className="text-2xl font-Roboto text-emeraldGreen">¡El evento ya ha comenzado!</span>
       )}
     </div>
   );

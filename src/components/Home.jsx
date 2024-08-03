@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import useSound from 'use-sound';
 import { FaMusic, FaPause } from 'react-icons/fa';
 import LottieAnimation from './Animations/LottieAnimation';
@@ -32,28 +32,33 @@ const Home = () => {
   };
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-ivoryWhite">
       {showWelcome ? (
-         <div className="fixed inset-0 flex flex-col items-center justify-center bg-ivoryWhite z-50">
-         <div className="flex flex-col items-center">
-           <LottieAnimation animationData={animationData} width={400} height={400} />
-         </div>
-         <h1 className="text-5xl font-GreatVibes font-extralight text-emeraldGreen mt-4 text-center">
-           ¡Bienvenidos! a la invitación de nuestra boda!
-         </h1>
-         <button
-           onClick={handleEnter}
-           className="mt-8 px-6 py-2 bg-emeraldGreen text-ivoryWhite text-lg rounded-full hover:bg-limeGreen transition duration-300"
-         >
-           Entrar
-         </button>
-       </div>
+        <div className="fixed inset-0 flex flex-col items-center justify-center bg-ivoryWhite z-50">
+          <div className="flex flex-col items-center">
+            <LottieAnimation animationData={animationData} width={400} height={400} />
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold font-GreatVibes text-emeraldGreen mt-4 text-center">
+            Bienvenidos a la invitación de Yazmin <span className="text-red-500">♥</span> Agustin
+          </h1>
+          <p className="mt-4 text-md md:text-lg text-center font-serif text-lightBrown">
+            La música de fondo es parte de la experiencia
+          </p>
+          <button
+            onClick={handleEnter}
+            className="mt-8 px-8 py-4 bg-brownDark font-GreatVibes text-lightBrown text-lg md:text-xl rounded-full border-2 border-emeraldGreen hover:bg-brownLight transition duration-300"
+          >
+            INGRESAR
+          </button>
+        </div>
       ) : (
-        <div>
-          <Cover />
-          <Countdown />
-          <CeremonyAndReception />
-          <Retratos/>
+        <div className="flex flex-col items-center justify-center min-h-screen">
+          <div className="container mx-auto px-4">
+            <Cover />
+            <Countdown />
+            <CeremonyAndReception />
+            <Retratos />
+          </div>
           <button
             onClick={toggleMusic}
             className="fixed bottom-4 right-4 p-2 bg-emeraldGreen text-ivoryWhite text-lg rounded-full hover:bg-limeGreen transition duration-300"

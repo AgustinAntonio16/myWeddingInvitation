@@ -1,0 +1,1 @@
+export const EVENT_DATE = new Date('2024-12-14T00:00:00');

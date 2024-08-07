@@ -28,7 +28,7 @@ const Countdown = () => {
   });
 
   return (
-    <div className="bg-lightIvory border-t-4 border-b-4 border-brown py-8 text-center">
+    <div className="bg-ivoryWhite border-b-4 py-4 text-center">
       <h2 className="text-5xl font-GreatVibes text-lightBrown">Falta</h2>
       {timeLeft.days !== undefined ? (
         <div className="flex justify-center mt-4 space-x-8 text-emeraldGreen">

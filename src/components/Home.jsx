@@ -8,6 +8,11 @@ import Countdown from './Countdown';
 import CeremonyAndReception from './CeremonyAndReception';
 import song from '../assets/music/loveYouStill.mp3';
 import Retratos from './Retratos';
+import Invitacion from './Invitacion';
+import Regalos from './Regalos';
+import Fiesta from './Fiesta';
+import CompartirFotos from './CompartirFotos';
+import Footer from './Footer';
 
 const Home = () => {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -36,10 +41,11 @@ const Home = () => {
       {showWelcome ? (
         <div className="fixed inset-0 flex flex-col items-center justify-center bg-ivoryWhite z-50">
           <div className="flex flex-col items-center">
-            <LottieAnimation animationData={animationData} width={400} height={400} />
+            <LottieAnimation animationData={animationData} width={300} height={300} />
           </div>
+          <Countdown/>
           <h1 className="text-4xl md:text-6xl font-bold font-GreatVibes text-emeraldGreen mt-4 text-center">
-            Bienvenidos a la invitación de Yazmin <span className="text-red-500">♥</span> Agustin
+            Yazmin <span className="text-red-500">♥</span> Agustin
           </h1>
           <p className="mt-4 text-md md:text-lg text-center font-serif text-lightBrown">
             La música de fondo es parte de la experiencia
@@ -55,9 +61,13 @@ const Home = () => {
         <div className="flex flex-col items-center justify-center min-h-screen">
           <div className="container mx-auto px-4">
             <Cover />
-            <Countdown />
+            <Invitacion/>
             <CeremonyAndReception />
             <Retratos />
+            <Fiesta/>
+            <Regalos/>
+            <CompartirFotos/>
+            <Footer/>
           </div>
           <button
             onClick={toggleMusic}

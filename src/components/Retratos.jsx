@@ -65,7 +65,7 @@ const Retratos = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white p-8">
-      <h1 className="text-4xl font-GreatVibes text-emeraldGreen mb-4">Retratos de Nuestro Amor</h1>
+      <h1 className="text-4xl font-GreatVibes text-emeraldGreen mb-4 text-center">Retratos de Nuestro Amor</h1>
       <div className="mb-12 flex flex-col items-center justify-center">
             <LottieAnimation
               animationData={animationData3}

@@ -4,7 +4,7 @@ import CeremonyMap from './CeremonyMap';
 
 const CeremonyLocation = () => {
   return (
-    <div className="min-h-screen bg-lightIvory py-12">
+    <div className="min-h-screen font-GreatVibes bg-lightIvory py-12">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-GreatVibes text-emeraldGreen">Ceremonia religiosa</h2>

@@ -6,8 +6,8 @@ import LottieAnimation from './Animations/LottieAnimation';
 
 const Regalos = () => {
   return (
-    <div className="bg-opacity-70 p-8 rounded-lg text-center mb-8 bg-gradient-to-r from-white via-transparent to-white bg-ivoryWhite">
-      <h2 className="text-5xl font-GreatVibes text-emeraldGreen mb-4">Regalos</h2>
+    <div className="bg-opacity-70 p-8 rounded-lg text-center mb-8 bg-gradient-to-r from-white via-transparent to-white bg-ivoryWhite font-GreatVibes">
+      <h2 className="text-5xl text-emeraldGreen mb-4">Regalos</h2>
       <div className="mb-12 flex flex-col items-center justify-center">
       <LottieAnimation
               animationData={animationData3}

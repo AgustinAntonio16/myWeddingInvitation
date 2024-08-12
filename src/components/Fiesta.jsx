@@ -7,10 +7,10 @@ import animationData6 from '../assets/animations/note.json';
 
 const Fiesta = () => {
   return (
-    <div className="bg-lightIvory py-12">
+    <div className="bg-lightIvory py-12 font-GreatVibes">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-GreatVibes text-emeraldGreen mb-8">Fiesta</h2>
-        <p className="text-lg md:text-xl font-serif text-lightBrown mb-12">
+        <p className="text-lg md:text-xl text-lightBrown mb-12">
           Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -53,7 +53,7 @@ const Fiesta = () => {
               to="/dress-code" 
               className="px-4 py-2 bg-emeraldGreen text-ivoryWhite text-md rounded-full hover:bg-limeGreen transition duration-300"
             >
-              Ver Más
+              Ver
             </Link>
           </div>
           <div className="bg-white shadow-md rounded-lg p-6">
@@ -74,7 +74,7 @@ const Fiesta = () => {
               to="/tips-notas" 
               className="px-4 py-2 bg-emeraldGreen text-ivoryWhite text-md rounded-full hover:bg-limeGreen transition duration-300"
             >
-              + Info
+              Ver
             </Link>
           </div>
         </div>

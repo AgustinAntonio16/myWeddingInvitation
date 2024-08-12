@@ -6,8 +6,8 @@ const CompartirFotos = () => {
   const albumLink = "https://photos.app.goo.gl/gSjdz2wEaBNBFMxA7"; // Reemplaza este enlace con el enlace real del álbum
 
   return (
-    <div className="bg-lightIvory min-h-screen py-12 flex flex-col items-center">
-      <h2 className="text-4xl font-GreatVibes text-emeraldGreen mb-8">Compartimos este día junto a ti</h2>
+    <div className="bg-lightIvory container mx-auto px-4 text-center font-GreatVibes">
+      <h2 className="text-4xl text-emeraldGreen mb-8">Compartimos este día junto a ti</h2>
       <p className="text-lg text-lightBrown mb-8">
         Comparte tus fotos y videos de este hermoso día
       </p>

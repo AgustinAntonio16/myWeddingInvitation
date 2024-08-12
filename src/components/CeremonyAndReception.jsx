@@ -4,14 +4,12 @@ import { Link } from 'react-router-dom';
 import LottieAnimation from './Animations/LottieAnimation';
 import animationData1 from '../assets/animations/church.json';
 import animationData2 from '../assets/animations/party.json';
-import CeremonyMap from './CeremonyMap';
-import ReceptionMap from './ReceptionMap';
 import SaveDate from './SaveDate';
 
 function CeremonyAndReception() {
   return (
     <Fragment>
-      <div id="fh5co-couple-story" className="bg-lightIvory py-12">
+      <div id="fh5co-couple-story" className="bg-lightIvory py-12 font-GreatVibes">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-GreatVibes text-emeraldGreen">Ceremonia religiosa</h2>
@@ -45,7 +43,14 @@ function CeremonyAndReception() {
               start="20241214T153000Z" 
               end="20241214T170000Z" 
             />
-            <Link to="/confirmar-asistencia" state={{ eventTitle: 'Ceremonia de la Boda de Yazmin y Agustin' }} className="mt-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300">
+            <Link 
+              to="/confirmar-asistencia" 
+              state={{ 
+                eventTitle: 'Ceremonia de la Boda de Yazmin y Agustin', 
+                isCeremony: true 
+              }} 
+              className="mt-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300"
+            >
               Confirmar Asistencia
             </Link>
           </div>
@@ -78,7 +83,14 @@ function CeremonyAndReception() {
               start="20241214T173000Z" 
               end="20241215T003000Z" 
             />
-            <Link to="/confirmar-asistencia" state={{ eventTitle: 'Recepción de la Boda de Yazmin y Agustin' }} className="mt-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300">
+            <Link 
+              to="/confirmar-asistencia" 
+              state={{ 
+                eventTitle: 'Recepción de la Boda de Yazmin y Agustin', 
+                isCeremony: false 
+              }} 
+              className="mt-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300"
+            >
               Confirmar Asistencia
             </Link>
           </div>

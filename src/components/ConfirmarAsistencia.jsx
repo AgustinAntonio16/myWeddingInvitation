@@ -1,92 +1,123 @@
-import React, { Fragment } from 'react';
-import { GOOGLE_MAPS_LINK_PARROQUIA, GOOGLE_MAPS_LINK_ACIENDA } from '../constants';
-import { Link } from 'react-router-dom';
-import LottieAnimation from './Animations/LottieAnimation';
-import animationData1 from '../assets/animations/church.json';
-import animationData2 from '../assets/animations/party.json';
-import CeremonyMap from './CeremonyMap';
-import ReceptionMap from './ReceptionMap';
-import SaveDate from './SaveDate';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { db } from '../../firebaseConfig';
+import { doc, updateDoc, getDoc } from 'firebase/firestore';
+import { auth } from '../../firebaseConfig';
+import { onAuthStateChanged } from 'firebase/auth';
 
-function CeremonyAndReception() {
+const ConfirmarAsistencia = () => {
+  const [asistencia, setAsistencia] = useState('Asistiré :)');
+  const [pasesConfirmados, setPasesConfirmados] = useState(1);
+  const [numeroPases, setNumeroPases] = useState(1); // Estado para manejar el número de pases
+  const [invitado, setInvitado] = useState(null);
+  const [nombre, setNombre] = useState('');
+  const [confirmacionRealizada, setConfirmacionRealizada] = useState(false);
+  const location = useLocation();
+  const { eventTitle, isCeremony } = location.state;
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const invitadoDoc = await getDoc(doc(db, "invitados", user.uid));
+        if (invitadoDoc.exists()) {
+          const invitadoData = invitadoDoc.data();
+          setInvitado(invitadoData);
+          setNombre(invitadoData.nombre);
+          setNumeroPases(invitadoData.numeroPases); // Cargar el número de pases desde Firestore
+          setConfirmacionRealizada(isCeremony ? invitadoData.confirmacionRealizadaCeremonia : invitadoData.confirmacionRealizadaRecepcion);
+          setPasesConfirmados(invitadoData.numeroPasesConfirmados || 1); // Establecer el número de pases confirmados, si ya se ha guardado
+        }
+      }
+    });
+
+    return () => unsubscribe();
+  }, [isCeremony]);
+
+  const handleConfirm = async () => {
+    if (auth.currentUser && invitado) {
+      const userDocRef = doc(db, 'invitados', auth.currentUser.uid);
+      await updateDoc(userDocRef, {
+        [isCeremony ? 'confirmacionCeremonia' : 'confirmacionRecepcion']: asistencia === 'Asistiré :)',
+        [isCeremony ? 'confirmacionRealizadaCeremonia' : 'confirmacionRealizadaRecepcion']: true,
+        [isCeremony ? 'pasesConfirmadosCeremonia' : 'pasesConfirmadosRecepcion']: pasesConfirmados, // Guardar el número de pases confirmados
+      });
+      setConfirmacionRealizada(true);
+    }
+  };
+
   return (
-    <Fragment>
-      <div id="fh5co-couple-story" className="bg-lightIvory py-12">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-GreatVibes text-emeraldGreen">Ceremonia religiosa</h2>
-            <p className="text-lg text-lightBrown mt-4">
-              <a
-                href={GOOGLE_MAPS_LINK_PARROQUIA}
-                title="Haz clic para ver el mapa en Google Maps"
-                target="_blank"
-                rel="noreferrer"
-                className="text-brown"
-              >
-                <strong>Parroquia de Santa María de los Remedios de Tonanitla</strong>
-              </a>
-              <br />
-              20 de Noviemmbre S/N, Centro, 55789 Santa María Tonanitla, Méx.
-            </p>
-          </div>
-          <div className="mb-12 flex flex-col items-center justify-center">
-            <LottieAnimation
-              animationData={animationData1}
-              width={350}
-              height={350}
-              startFrame={50}
-              endFrame={150}
-            />
-            <Link to="/ceremony-location" className="mt-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300">
-              Ver Ubicación de la Ceremonia
-            </Link>
-            <SaveDate 
-              title="Ceremonia de la Boda de Yazmin y Agustin" 
-              start="20241214T153000Z" 
-              end="20241214T170000Z" 
-            />
-            <Link to="/confirmar-asistencia" state={{ eventTitle: 'Ceremonia de la Boda de Yazmin y Agustin' }} className="mt-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300">
-              Confirmar Asistencia
-            </Link>
-          </div>
-        </div>
+    <div className="min-h-screen bg-lightIvory py-12 flex flex-col items-center justify-center font-GreatVibes">
+      <div className="w-full max-w-md p-8 bg-lightIvory rounded-lg shadow-md">
+        <h2 className="text-4xl text-emeraldGreen mb-8 text-center">{eventTitle}</h2>
 
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-GreatVibes text-emeraldGreen">Recepción</h2>
-            <p className="text-lg text-lightBrown mt-4">
-              <a
-                href={GOOGLE_MAPS_LINK_ACIENDA}
-                title="Haz clic para ver el mapa en Google Maps"
-                target="_blank"
-                rel="noreferrer"
-                className="text-brown"
+        {confirmacionRealizada ? (
+          <div className="text-center text-emeraldGreen text-2xl">
+            {asistencia === 'Asistiré :)' ? (
+              <p>Te esperamos con mucho gusto el 14 de diciembre</p>
+            ) : (
+              <div>
+                <p>No te preocupes, entendemos y sabemos que nos envías tus mejores deseos.</p>
+                <button 
+                  onClick={() => setConfirmacionRealizada(false)} 
+                  className="mt-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300"
+                >
+                  Cambiar confirmación
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <>
+            <p className="text-center text-2xl mb-4">Querido {nombre}, nos encantaría que nos acompañaras.</p>
+            <div className="mb-4 flex justify-center space-x-4">
+              <button
+                onClick={() => setAsistencia('Asistiré :)')}
+                className={`flex items-center px-4 py-2 space-x-2 ${asistencia === 'Asistiré :)' ? 'bg-emeraldGreen text-ivoryWhite' : 'bg-lightBrown text-emeraldGreen'} rounded-full transition duration-300`}
               >
-                <strong>Hacienda Azalaga</strong>
-              </a>
-              <br />
-              Abundio Gómez S/N, La Urbana o La Chinampa, 55789 Santa María Tonanitla, Méx.
-            </p>
-          </div>
-          <div className="mb-12 flex flex-col items-center justify-center">
-            <LottieAnimation animationData={animationData2} width={300} height={300} startFrame={0} endFrame={150} />
-            <Link to="/reception-location" className="px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300">
-              Ver Ubicación de la Recepción
-            </Link>
-            <SaveDate 
-              title="Recepción de la Boda de Yazmin y Agustin" 
-              start="20241214T173000Z" 
-              end="20241215T003000Z" 
-            />
-            <Link to="/confirmar-asistencia" state={{ eventTitle: 'Recepción de la Boda de Yazmin y Agustin' }} className="mt-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300">
+                <FaCheckCircle />
+                <span>Asistiré :)</span>
+              </button>
+              <button
+                onClick={() => setAsistencia('No me es posible :(')}
+                className={`flex items-center px-4 py-2 space-x-2 ${asistencia === 'No me es posible :(' ? 'bg-emeraldGreen text-ivoryWhite' : 'bg-lightBrown text-emeraldGreen'} rounded-full transition duration-300`}
+              >
+                <FaTimesCircle />
+                <span>No me es posible :(</span>
+              </button>
+            </div>
+            <div className="mb-4">
+              <label className="block text-lg mb-2">Número de Pases:</label>
+              <select
+                value={pasesConfirmados}
+                onChange={(e) => setPasesConfirmados(parseInt(e.target.value))}
+                className="w-full px-4 py-2 border rounded-lg"
+              >
+                {Array.from({ length: numeroPases }, (_, i) => i + 1).map(num => (
+                  <option key={num} value={num}>{num}</option>
+                ))}
+              </select>
+            </div>
+            <button
+              onClick={handleConfirm}
+              className="w-full px-4 py-2 bg-emeraldGreen text-ivoryWhite text-lg rounded-full hover:bg-limeGreen transition duration-300 mb-4"
+            >
               Confirmar Asistencia
-            </Link>
-          </div>
+            </button>
+          </>
+        )}
+
+        <div className="text-center">
+          <Link 
+            to="/" 
+            className="px-4 py-2 bg-brownDark text-lightBrown text-lg rounded-full hover:bg-brownLight transition duration-300"
+          >
+            Volver a Inicio
+          </Link>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
-}
+};
 
-export default React.memo(CeremonyAndReception);
-
+export default ConfirmarAsistencia;

@@ -9,6 +9,9 @@ import Musica from './components/Musica';
 import DressCode from './components/DressCode';
 import TipsNotas from './components/TipsNotas';
 import ConfirmarAsistencia from './components/ConfirmarAsistencia';
+import RegisterGuest from './components/firebaseComponents/RegisterGuest';
+import GenerateGiftList from './components/firebaseComponents/GenerateGiftList';
+import BrindarDeseos from './components/BrindarDeseos';
 
 
 function App() {
@@ -24,8 +27,12 @@ function App() {
         <Route path="/dress-code" element={<DressCode/>} />
         <Route path="/tips-notas" element={<TipsNotas/>} />
         <Route path="/confirmar-asistencia" element={<ConfirmarAsistencia/>} />
+        <Route path="/brindar-deseos" element={<BrindarDeseos/>} />
       </Routes>
     </Router>
+
+    //<RegisterGuest/>
+    // <GenerateGiftList/>
   );
 }
 

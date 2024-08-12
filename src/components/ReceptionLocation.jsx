@@ -4,10 +4,10 @@ import ReceptionMap from './ReceptionMap';
 
 const ReceptionLocation = () => {
   return (
-    <div className="min-h-screen bg-lightIvory py-12">
+    <div className="min-h-screen font-GreatVibes bg-lightIvory py-12">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-GreatVibes text-emeraldGreen">Recepción</h2>
+          <h2 className="text-4xl  text-emeraldGreen">Recepción</h2>
           <p className="text-lg text-lightBrown mt-4">
             <a
               href="https://www.google.com/maps/place/Hacienda+Azalaga/"

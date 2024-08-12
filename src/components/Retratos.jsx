@@ -51,7 +51,6 @@ const Retratos = () => {
 
   const images = [
     Foto1,
-    Foto2,
     Foto3,
     Foto4,
     Foto5,

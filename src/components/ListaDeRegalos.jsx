@@ -1,53 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { db, auth } from '../../firebaseConfig';
+import { collection, getDocs, updateDoc, doc, arrayUnion } from 'firebase/firestore';
 
 const ListaDeRegalos = () => {
-  const regalos = [
-    "Cafetera",
-    "Batería de cocina o sartenes",
-    "Aspiradora de mano",
-    "Aspiradora grande",
-    "Plancha",
-    "Horno de microondas",
-    "Juego de toallas",
-    "Juego de sábanas",
-    "Colcha Queen size",
-    "Set",
-    "Juego de almohadas",
-    "Fundas para almohadas",
-    "Espejo de baño",
-    "Abrelatas",
-    "Juego de relojes",
-    "Heladera de aire",
-    "Ventilador",
-    "Set de cuchillos pro",
-    "Espejo de baño",
-    "Waflera",
-    "Juego de cubiertos",
-    "Floreros",
-    "Frasada",
-    "Lámpara de noche",
-    "Cojines objetos de cama decoración",
-    "Porta retrato",
-    "Videojuegos PS4",
-    "Colador de huevos",
-    "Olla express (presión)",
-    "Platos para cereal",
-    "Juego de recipientes para almacenar",
-    "Juego de copas",
-    "Cobertor",
-    "Platos juego",
-    "Juego de herramientas básico",
-    "Batas de baño",
-    "Set de especieros",
-    "Tetera",
-    "Protector de colchón",
-    "Organizador de alacena",
-    "Set de utensilios para cocina",
-    "Escurridor de acero para fregadero",
-    "Set de comales",
-    "Set de focos inteligentes",
-  ];
+  const [regalos, setRegalos] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  // Cargar la lista de regalos desde Firestore
+  const loadRegalos = async () => {
+    const querySnapshot = await getDocs(collection(db, 'ListaDeRegalos'));
+    const regalosList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    setRegalos(regalosList);
+  };
+
+  useEffect(() => {
+    loadRegalos();
+  }, []);
+
+  // Función para reservar un regalo
+  const handleReservarRegalo = async (id, nombreRegalo) => {
+    const regaloRef = doc(db, 'ListaDeRegalos', id);
+    const user = auth.currentUser;
+
+    if (user) {
+      const invitadoRef = doc(db, 'invitados', user.uid);
+
+      // Actualizar el regalo como reservado y agregarlo al campo "regalo" del invitado
+      await updateDoc(regaloRef, { reservado: true });
+      await updateDoc(invitadoRef, {
+        regalo: arrayUnion(nombreRegalo), // Acumula los regalos seleccionados
+      });
+
+      // Mostrar el modal de agradecimiento
+      setShowModal(true);
+
+      // Ocultar el modal después de 3 segundos
+      setTimeout(() => {
+        setShowModal(false);
+      }, 3000);
+
+      loadRegalos(); // Recargar la lista después de reservar
+    }
+  };
 
   return (
     <div className="min-h-screen bg-ivoryWhite py-12">
@@ -58,8 +53,22 @@ const ListaDeRegalos = () => {
             Para nosotros tu presencia es nuestro mejor regalo, pero si de tu corazón nace regalarnos algo estaremos infinitamente agradecidos.
           </p>
           <ul className="list-disc list-inside text-lg md:text-xl font-serif text-brown space-y-2">
-            {regalos.map((regalo, index) => (
-              <li key={index} className="p-2 border-b border-lightBrown">{regalo}</li>
+            {regalos.map((regalo) => (
+              <li
+                key={regalo.id}
+                className={`p-2 border-b border-lightBrown ${regalo.reservado ? 'text-gray-400' : ''}`}
+              >
+                {regalo.nombre}
+                {!regalo.reservado && (
+                  <button
+                    onClick={() => handleReservarRegalo(regalo.id, regalo.nombre)}
+                    className="ml-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite text-sm rounded-full hover:bg-limeGreen transition duration-300"
+                  >
+                    Reservar
+                  </button>
+                )}
+                {regalo.reservado && <span className="ml-4 text-red-500">Reservado</span>}
+              </li>
             ))}
           </ul>
           <div className="mt-8 text-center">
@@ -72,6 +81,15 @@ const ListaDeRegalos = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+            <h2 className="text-2xl font-GreatVibes text-emeraldGreen">Te lo agradecemos con el alma</h2>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

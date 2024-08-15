@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from '../../firebaseConfig';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
+// Importa la imagen de fondo
+import backgroundImage from '../assets/Fondo/background.jpg';
+
+
 
 const Musica = () => {
   const [song, setSong] = useState('');
@@ -35,7 +39,9 @@ const Musica = () => {
   }, []);
 
   return (
-    <div className="min-h-screen font-GreatVibes bg-lightIvory py-12">
+    <div className="min-h-screen font-GreatVibes bg-lightIvory py-12 bg-cover bg-center"
+    style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-GreatVibes text-emeraldGreen mb-8">Música</h2>
         <p className="text-lg md:text-xl font-serif text-lightBrown mb-8">

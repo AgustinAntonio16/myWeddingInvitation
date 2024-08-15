@@ -17,7 +17,7 @@ const Login = ({ onLoginSuccess }) => {
   };
 
   return (
-    <div className="bg-opacity-70 p-8 rounded-lg text-center font-GreatVibes bg-ivoryWhite">
+    <div className="bg-opacity-50 p-8 rounded-lg text-center font-GreatVibes bg-ivoryWhite">
       <h2 className="text-3xl  text-emeraldGreen mb-4">Iniciar Sesión</h2>
       <div className="mb-4">
         <input

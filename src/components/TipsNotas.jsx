@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// Importa la imagen de fondo
+import backgroundImage from '../assets/Fondo/background.jpg';
 
 const TipsNotas = () => {
   return (
-    <div className="min-h-screen bg-lightIvory py-12">
+    <div className="min-h-screen bg-lightIvory py-12 bg-cover bg-center"
+    style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="container mx-auto px-4 text-center font-GreatVibes">
         <h2 className="text-4xl text-emeraldGreen mb-8">Tips y Notas</h2>
         <ul className="text-lg md:text-xl text-lightBrown list-disc list-inside">

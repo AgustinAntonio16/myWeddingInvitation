@@ -1,5 +1,5 @@
 import React from 'react';
-import Fondo from "../assets/Fondo.jpg";
+import Fondo from "../assets/Fondo1.jpg";
 
 const Cover = () => {
   return (

@@ -5,6 +5,8 @@ import { db } from '../../firebaseConfig';
 import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { auth } from '../../firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
+// Importa la imagen de fondo
+import backgroundImage from '../assets/Fondo/background.jpg';
 
 const ConfirmarAsistencia = () => {
   const [asistencia, setAsistencia] = useState('Asistiré :)');
@@ -47,8 +49,10 @@ const ConfirmarAsistencia = () => {
   };
 
   return (
-    <div className="min-h-screen bg-lightIvory py-12 flex flex-col items-center justify-center font-GreatVibes">
-      <div className="w-full max-w-md p-8 bg-lightIvory rounded-lg shadow-md">
+    <div className="min-h-screen bg-lightIvory py-12 flex flex-col items-center justify-center font-GreatVibes bg-cover bg-center"
+    style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
+      <div className="w-full max-w-md p-8 bg-lightIvory bg-opacity-50 p-8 rounded-lg shadow-md">
         <h2 className="text-4xl text-emeraldGreen mb-8 text-center">{eventTitle}</h2>
 
         {confirmacionRealizada ? (
@@ -58,12 +62,6 @@ const ConfirmarAsistencia = () => {
             ) : (
               <div>
                 <p>No te preocupes, entendemos y sabemos que nos envías tus mejores deseos.</p>
-                <button 
-                  onClick={() => setConfirmacionRealizada(false)} 
-                  className="mt-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300"
-                >
-                  Cambiar confirmación
-                </button>
               </div>
             )}
           </div>
@@ -110,9 +108,9 @@ const ConfirmarAsistencia = () => {
         <div className="text-center">
           <Link 
             to="/" 
-            className="px-4 py-2 bg-brownDark text-lightBrown text-lg rounded-full hover:bg-brownLight transition duration-300"
+            className="px-4 py-4 bg-brownDark text-lightBrown text-2xl rounded-full hover:bg-brownLight transition duration-300"
           >
-            Volver a Inicio
+            Volver
           </Link>
         </div>
       </div>

@@ -18,6 +18,9 @@ import Login from './firebaseComponents/Login';
 import { auth } from '../../firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 
+// Importa la imagen de fondo
+import backgroundImage from '../assets/Fondo/background.jpg';
+
 const Home = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [user, setUser] = useState(null);
@@ -50,9 +53,12 @@ const Home = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-ivoryWhite">
+    <div 
+    className={`relative min-h-screen ${!user ? 'bg-cover bg-center' : 'bg-lightIvory'}`}
+      style={!user ? { backgroundImage: `url(${backgroundImage})` } : {}}
+    >
       {!user ? (
-        <div className="fixed inset-0 flex flex-col items-center justify-center bg-ivoryWhite z-50">
+        <div className="fixed inset-0 flex flex-col items-center justify-center z-50">
           <div className="flex flex-col items-center">
             <LottieAnimation animationData={animationData} width={150} height={150} />
           </div>
@@ -60,15 +66,12 @@ const Home = () => {
           <h1 className="text-4xl md:text-6xl font-bold font-GreatVibes text-emeraldGreen mt-4 text-center">
             Yazmin <span className="text-red-500">♥</span> Agustin
           </h1>
-          <p className="mt-4 text-md md:text-lg text-center font-serif text-lightBrown">
-            La música de fondo es parte de la experiencia
-          </p>
           {/* Muestra el formulario de inicio de sesión */}
           <Login onLoginSuccess={() => setUser(true)} />
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center min-h-screen">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto p-1">
             <Cover />
             <Invitacion />
             <CeremonyAndReception />

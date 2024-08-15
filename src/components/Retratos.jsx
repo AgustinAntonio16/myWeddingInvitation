@@ -14,6 +14,8 @@ import Foto9 from "../assets/Retratos/9.jpg";
 import Foto10 from "../assets/Retratos/10.jpg";
 import LottieAnimation from './Animations/LottieAnimation';
 import animationData3 from '../assets/animations/camara.json';
+// Importa la imagen de fondo
+import backgroundImage from '../assets/Fondo/background.jpg';
 
 const Retratos = () => {
   const settings = {
@@ -63,7 +65,9 @@ const Retratos = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white p-8">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center p-8 my-8"
+    style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <h1 className="text-4xl font-GreatVibes text-emeraldGreen mb-4 text-center">Retratos de Nuestro Amor</h1>
       <div className="mb-12 flex flex-col items-center justify-center">
             <LottieAnimation

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { db, auth } from '../../firebaseConfig';
 import { collection, getDocs, updateDoc, doc, arrayUnion } from 'firebase/firestore';
+// Importa la imagen de fondo
+import backgroundImage from '../assets/Fondo/background.jpg';
 
 const ListaDeRegalos = () => {
   const [regalos, setRegalos] = useState([]);
@@ -45,10 +47,12 @@ const ListaDeRegalos = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ivoryWhite py-12">
+    <div className="min-h-screen bg-ivoryWhite py-12 bg-cover bg-center"
+    style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-GreatVibes text-emeraldGreen mb-8 text-center">Lista de Regalos</h2>
-        <div className="bg-white shadow-md rounded-lg p-6">
+        <div className="bg-white bg-opacity-50 shadow-md rounded-lg p-6">
           <p className="text-lg md:text-2xl font-serif text-lightBrown mb-4 text-center">
             Para nosotros tu presencia es nuestro mejor regalo, pero si de tu corazón nace regalarnos algo estaremos infinitamente agradecidos.
           </p>

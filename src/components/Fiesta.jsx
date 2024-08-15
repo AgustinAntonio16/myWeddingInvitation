@@ -5,16 +5,22 @@ import animationData4 from '../assets/animations/music.json';
 import animationData5 from '../assets/animations/dressCode.json';
 import animationData6 from '../assets/animations/note.json';
 
+// Importa la imagen de fondo
+import backgroundImage from '../assets/Fondo/background.jpg';
+
+
 const Fiesta = () => {
   return (
-    <div className="bg-lightIvory py-12 font-GreatVibes">
+    <div className="bg-lightIvory py-12 font-GreatVibes bg-cover bg-center"
+    style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-GreatVibes text-emeraldGreen mb-8">Fiesta</h2>
         <p className="text-lg md:text-xl text-lightBrown mb-12">
           Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white shadow-md rounded-lg p-6">
+          <div className="bg-white bg-opacity-40 p-8 rounded-lg shadow-md rounded-lg p-6">
             <h3 className="text-2xl font-GreatVibes text-emeraldGreen mb-4">Música</h3>
             <div className="mb-12 flex flex-col items-center justify-center">
       <LottieAnimation
@@ -35,7 +41,7 @@ const Fiesta = () => {
               Sugerir Canción
             </Link>
           </div>
-          <div className="bg-white shadow-md rounded-lg p-6">
+          <div className="bg-white bg-opacity-50 p-8 rounded-lg shadow-md rounded-lg p-6">
             <h3 className="text-2xl font-GreatVibes text-emeraldGreen mb-4">Dress Code</h3>
             <div className="mb-12 flex flex-col items-center justify-center">
       <LottieAnimation
@@ -56,7 +62,7 @@ const Fiesta = () => {
               Ver
             </Link>
           </div>
-          <div className="bg-white shadow-md rounded-lg p-6">
+          <div className="bg-white bg-opacity-50 p-8 rounded-lg shadow-md rounded-lg p-6">
             <h3 className="text-2xl font-GreatVibes text-emeraldGreen mb-4">Tips y Notas</h3>
             <div className="mb-12 flex flex-col items-center justify-center">
       <LottieAnimation

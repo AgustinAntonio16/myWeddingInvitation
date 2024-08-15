@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { addDoc, collection, doc, getDoc } from 'firebase/firestore';
 import { db, auth } from '../../firebaseConfig';
 import { useNavigate } from 'react-router-dom';
+// Importa la imagen de fondo
+import backgroundImage from '../assets/Fondo/background.jpg';
 
 const BrindarDeseos = () => {
   const [mensaje, setMensaje] = useState('');
@@ -46,8 +48,10 @@ const BrindarDeseos = () => {
   };
 
   return (
-    <div className="min-h-screen bg-lightIvory py-12 flex flex-col items-center justify-center font-GreatVibes">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
+    <div className="min-h-screen bg-lightIvory py-12 flex flex-col items-center justify-center font-GreatVibes bg-cover bg-center"
+    style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
+      <div className="w-full max-w-md p-8 bg-white bg-opacity-50 p-8 rounded-lg shadow-md">
         <h2 className="text-4xl text-emeraldGreen mb-8 text-center">Bríndanos tus buenos deseos</h2>
         <textarea
           value={mensaje}

@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ReceptionMap from './ReceptionMap';
+// Importa la imagen de fondo
+import backgroundImage from '../assets/Fondo/background.jpg';
 
 const ReceptionLocation = () => {
   return (
-    <div className="min-h-screen font-GreatVibes bg-lightIvory py-12">
+    <div className="min-h-screen font-GreatVibes bg-lightIvory py-12 bg-cover bg-center"
+    style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl  text-emeraldGreen">Recepción</h2>

@@ -6,6 +6,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+// Importa la imagen de fondo
+import backgroundImage from '../../assets/Fondo/background.jpg';
+
 const BuenosDeseos = () => {
   const [deseos, setDeseos] = useState([]);
 
@@ -33,13 +36,15 @@ const BuenosDeseos = () => {
   };
 
   return (
-    <div className="min-h-screen bg-ivoryWhite py-12">
+    <div className="min-h-screen font-GreatVibes bg-ivoryWhite py-12 bg-cover bg-center"
+    style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-GreatVibes text-emeraldGreen mb-8 text-center">Buenos Deseos</h2>
+        <h2 className="text-4xl text-emeraldGreen mb-8 text-center">Buenos Deseos</h2>
         {deseos.length > 0 ? (
           <Slider {...settings}>
             {deseos.map((deseo, index) => (
-              <div key={index} className="p-6 bg-white rounded-lg shadow-md text-center">
+              <div key={index} className="p-6 bg-white bg-opacity-50 p-8 rounded-lg rounded-lg shadow-md text-center">
                 <p className="text-lg md:text-xl italic font-serif text-lightBrown mb-4">"{deseo.mensaje}"</p>
                 <p className="text-lg md:text-xl font-semibold text-brown">- {deseo.nombre}</p>
               </div>

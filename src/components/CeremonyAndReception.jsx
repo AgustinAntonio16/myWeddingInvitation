@@ -5,11 +5,15 @@ import LottieAnimation from './Animations/LottieAnimation';
 import animationData1 from '../assets/animations/church.json';
 import animationData2 from '../assets/animations/party.json';
 import SaveDate from './SaveDate';
+// Importa la imagen de fondo
+import backgroundImage from '../assets/Fondo/background.jpg';
 
 function CeremonyAndReception() {
   return (
     <Fragment>
-      <div id="fh5co-couple-story" className="bg-lightIvory py-12 font-GreatVibes">
+      <div id="fh5co-couple-story" className="bg-lightIvory py-12 font-GreatVibes bg-cover bg-center"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-GreatVibes text-emeraldGreen">Ceremonia religiosa</h2>
@@ -30,10 +34,8 @@ function CeremonyAndReception() {
           <div className="mb-12 flex flex-col items-center justify-center">
             <LottieAnimation
               animationData={animationData1}
-              width={350}
-              height={350}
-              startFrame={50}
-              endFrame={150}
+              width={300}
+              height={300}
             />
             <Link to="/ceremony-location" className="mt-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300">
               Ver Ubicación de la Ceremonia

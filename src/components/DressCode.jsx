@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// Importa la imagen de fondo
+import backgroundImage from '../assets/Fondo/background.jpg';
+
 
 const DressCode = () => {
   return (
-    <div className="min-h-screen bg-lightIvory py-12 font-GreatVibes">
+    <div className="min-h-screen bg-lightIvory py-12 font-GreatVibes bg-cover bg-center"
+    style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl text-emeraldGreen mb-8">Dress Code</h2>
         <p className="text-lg md:text-xl text-lightBrown mb-8">

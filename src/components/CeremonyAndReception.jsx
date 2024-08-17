@@ -16,16 +16,16 @@ function CeremonyAndReception() {
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-GreatVibes text-emeraldGreen">Ceremonia religiosa</h2>
-            <p className="text-lg text-lightBrown mt-4">
+            <h2 className="text-5xl font-GreatVibes text-emeraldGreen">Ceremonia religiosa</h2>
+            <p className="text-2xl text-lightBrown mt-4">
               <a
-                href={GOOGLE_MAPS_LINK_PARROQUIA}
+                href= "https://www.google.com.mx/maps/place/Iglesia+de+Santa+Mar%C3%ADa+Tonanitla,+18+de+Noviembre,+Villas+de+Santa+Mar%C3%ADa,+Santa+Mar%C3%ADa+Tonanitla,+55789+Santa+Mar%C3%ADa+Tonanitla,+M%C3%A9x./@19.6876838,-99.0560563,17z/data=!3m1!4b1!4m6!3m5!1s0x85d1f2e301052ae1:0x9cb1d57d20d62f50!8m2!3d19.6877097!4d-99.0535672!16s%2Fg%2F11bvtjv2sc?entry=ttu"
                 title="Haz clic para ver el mapa en Google Maps"
                 target="_blank"
                 rel="noreferrer"
                 className="text-brown"
               >
-                <strong>Parroquia de Santa María de los Remedios de Tonanitla</strong>
+                <strong >Parroquia de Santa María de los Remedios de Tonanitla</strong>
               </a>
               <br />
               20 de Noviemmbre S/N, Centro, 55789 Santa María Tonanitla, Méx.
@@ -60,8 +60,8 @@ function CeremonyAndReception() {
 
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-GreatVibes text-emeraldGreen">Recepción</h2>
-            <p className="text-lg text-lightBrown mt-4">
+            <h2 className="text-5xl font-GreatVibes text-emeraldGreen">Recepción</h2>
+            <p className="text-2xl text-lightBrown mt-4">
               <a
                 href={GOOGLE_MAPS_LINK_ACIENDA}
                 title="Haz clic para ver el mapa en Google Maps"
@@ -77,7 +77,7 @@ function CeremonyAndReception() {
           </div>
           <div className="mb-12 flex flex-col items-center justify-center">
             <LottieAnimation animationData={animationData2} width={300} height={300} startFrame={0} endFrame={150} />
-            <Link to="/reception-location" className="px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300">
+            <Link to="/reception-location" className="mt-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300">
               Ver Ubicación de la Recepción
             </Link>
             <SaveDate 

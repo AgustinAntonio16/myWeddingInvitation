@@ -15,13 +15,13 @@ const Fiesta = () => {
     style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-GreatVibes text-emeraldGreen mb-8">Fiesta</h2>
-        <p className="text-lg md:text-xl text-lightBrown mb-12">
+        <h2 className="text-5xl font-GreatVibes text-emeraldGreen mb-8">Fiesta</h2>
+        <p className="text-3xl md:text-xl text-lightBrown mb-12">
           Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-white bg-opacity-40 p-8 rounded-lg shadow-md rounded-lg p-6">
-            <h3 className="text-2xl font-GreatVibes text-emeraldGreen mb-4">Música</h3>
+            <h3 className="text-4xl font-GreatVibes text-emeraldGreen mb-4">Música</h3>
             <div className="mb-12 flex flex-col items-center justify-center">
       <LottieAnimation
               animationData={animationData4}
@@ -31,18 +31,18 @@ const Fiesta = () => {
               endFrame={150}
             />
       </div>
-            <p className="text-md md:text-lg font-serif text-lightBrown mb-4">
+            <p className="text-lg md:text-xl font-serif text-lightBrown mb-4">
               ¿Cuál es la canción que no debe faltar en la PlayList de la fiesta?
             </p>
             <Link 
               to="/musica" 
-              className="px-4 py-2 bg-emeraldGreen text-ivoryWhite text-md rounded-full hover:bg-limeGreen transition duration-300"
+              className="text-xl px-4 py-2 bg-emeraldGreen text-ivoryWhite text-md rounded-full hover:bg-limeGreen transition duration-300"
             >
               Sugerir Canción
             </Link>
           </div>
           <div className="bg-white bg-opacity-50 p-8 rounded-lg shadow-md rounded-lg p-6">
-            <h3 className="text-2xl font-GreatVibes text-emeraldGreen mb-4">Dress Code</h3>
+            <h3 className="text-4xl font-GreatVibes text-emeraldGreen mb-4">Dress Code</h3>
             <div className="mb-12 flex flex-col items-center justify-center">
       <LottieAnimation
               animationData={animationData5}
@@ -52,18 +52,18 @@ const Fiesta = () => {
               endFrame={150}
             />
       </div>
-            <p className="text-md md:text-lg font-serif text-lightBrown mb-4">
+            <p className="text-lg md:text-xl font-serif text-lightBrown mb-4">
               Una orientación para tu vestuario
             </p>
             <Link 
               to="/dress-code" 
-              className="px-4 py-2 bg-emeraldGreen text-ivoryWhite text-md rounded-full hover:bg-limeGreen transition duration-300"
+              className="text-2xl px-4 py-2 bg-emeraldGreen text-ivoryWhite text-md rounded-full hover:bg-limeGreen transition duration-300"
             >
               Ver
             </Link>
           </div>
-          <div className="bg-white bg-opacity-50 p-8 rounded-lg shadow-md rounded-lg p-6">
-            <h3 className="text-2xl font-GreatVibes text-emeraldGreen mb-4">Tips y Notas</h3>
+          <div className="bg-white bg-opacity-50 p-8 shadow-md rounded-lg p-6">
+            <h3 className="text-4xl font-GreatVibes text-emeraldGreen mb-4">Tips y Notas</h3>
             <div className="mb-12 flex flex-col items-center justify-center">
       <LottieAnimation
               animationData={animationData6}
@@ -73,12 +73,12 @@ const Fiesta = () => {
               endFrame={150}
             />
       </div>
-            <p className="text-md md:text-lg font-serif text-lightBrown mb-4">
+            <p className="text-lg md:text-xl font-serif text-lightBrown mb-4">
               Información adicional para tener en cuenta
             </p>
             <Link 
               to="/tips-notas" 
-              className="px-4 py-2 bg-emeraldGreen text-ivoryWhite text-md rounded-full hover:bg-limeGreen transition duration-300"
+              className="text-2xl px-4 py-2 bg-emeraldGreen text-ivoryWhite text-md rounded-full hover:bg-limeGreen transition duration-300"
             >
               Ver
             </Link>

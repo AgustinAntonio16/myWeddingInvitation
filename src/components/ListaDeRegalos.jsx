@@ -20,8 +20,8 @@ const ListaDeRegalos = () => {
     loadRegalos();
   }, []);
 
-  // Función para reservar un regalo
-  const handleReservarRegalo = async (id, nombreRegalo) => {
+  // Función para elegir un regalo
+  const handleElegirRegalo = async (id, nombreRegalo) => {
     const regaloRef = doc(db, 'ListaDeRegalos', id);
     const user = auth.currentUser;
 
@@ -42,21 +42,21 @@ const ListaDeRegalos = () => {
         setShowModal(false);
       }, 3000);
 
-      loadRegalos(); // Recargar la lista después de reservar
+      loadRegalos(); // Recargar la lista después de elegir
     }
   };
 
   return (
     <div className="min-h-screen bg-ivoryWhite py-12 bg-cover bg-center"
-    style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-GreatVibes text-emeraldGreen mb-8 text-center">Lista de Regalos</h2>
+        <h2 className="text-5xl font-GreatVibes text-emeraldGreen mb-8 text-center">Lista de Regalos</h2>
         <div className="bg-white bg-opacity-50 shadow-md rounded-lg p-6">
           <p className="text-lg md:text-2xl font-serif text-lightBrown mb-4 text-center">
             Para nosotros tu presencia es nuestro mejor regalo, pero si de tu corazón nace regalarnos algo estaremos infinitamente agradecidos.
           </p>
-          <ul className="list-disc list-inside text-lg md:text-xl font-serif text-brown space-y-2">
+          <ul className="list-disc list-inside text-xl md:text-2xl font-serif text-brown space-y-2">
             {regalos.map((regalo) => (
               <li
                 key={regalo.id}
@@ -64,12 +64,14 @@ const ListaDeRegalos = () => {
               >
                 {regalo.nombre}
                 {!regalo.reservado && (
-                  <button
-                    onClick={() => handleReservarRegalo(regalo.id, regalo.nombre)}
-                    className="ml-4 px-4 py-2 bg-emeraldGreen text-ivoryWhite text-sm rounded-full hover:bg-limeGreen transition duration-300"
-                  >
-                    Reservar
-                  </button>
+                  <div className="flex justify-end mt-2">
+                    <button
+                      onClick={() => handleElegirRegalo(regalo.id, regalo.nombre)}
+                      className="px-4 py-2 bg-emeraldGreen text-ivoryWhite text-sm rounded-full hover:bg-limeGreen transition duration-300"
+                    >
+                      Elegir
+                    </button>
+                  </div>
                 )}
                 {regalo.reservado && <span className="ml-4 text-red-500">Reservado</span>}
               </li>
@@ -78,7 +80,7 @@ const ListaDeRegalos = () => {
           <div className="mt-8 text-center">
             <Link 
               to="/" 
-              className="px-4 py-2 bg-emeraldGreen text-ivoryWhite text-lg rounded-full hover:bg-limeGreen transition duration-300"
+              className="px-4 py-2 bg-emeraldGreen font-GreatVibes text-ivoryWhite text-lg rounded-full hover:bg-limeGreen transition duration-300"
             >
               Regresar a Inicio
             </Link>

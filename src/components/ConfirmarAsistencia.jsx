@@ -67,18 +67,18 @@ const ConfirmarAsistencia = () => {
           </div>
         ) : (
           <>
-            <p className="text-center text-2xl mb-4">Querido {nombre}, nos encantaría que nos acompañaras.</p>
+            <p className="text-center text-2xl mb-4">{nombre}, nos encantaría que nos acompañaras.</p>
             <div className="mb-4 flex justify-center space-x-4">
               <button
                 onClick={() => setAsistencia('Asistiré :)')}
-                className={`flex items-center px-4 py-2 space-x-2 ${asistencia === 'Asistiré :)' ? 'bg-emeraldGreen text-ivoryWhite' : 'bg-lightBrown text-emeraldGreen'} rounded-full transition duration-300`}
+                className={`flex items-center px-4 py-2 space-x-2 ${asistencia === 'Asistiré :)' ? 'bg-emeraldGreen text-ivoryWhite' : 'bg-gray-400 text-white'} rounded-full transition duration-300`}
               >
                 <FaCheckCircle />
                 <span>Asistiré :)</span>
               </button>
               <button
                 onClick={() => setAsistencia('No me es posible :(')}
-                className={`flex items-center px-4 py-2 space-x-2 ${asistencia === 'No me es posible :(' ? 'bg-emeraldGreen text-ivoryWhite' : 'bg-lightBrown text-emeraldGreen'} rounded-full transition duration-300`}
+                className={`flex items-center px-4 py-2 space-x-2 ${asistencia === 'No me es posible :(' ? 'bg-emeraldGreen text-ivoryWhite' : 'bg-gray-400 text-white'} rounded-full transition duration-300`}
               >
                 <FaTimesCircle />
                 <span>No me es posible :(</span>
@@ -108,7 +108,7 @@ const ConfirmarAsistencia = () => {
         <div className="text-center">
           <Link 
             to="/" 
-            className="px-4 py-4 bg-brownDark text-lightBrown text-2xl rounded-full hover:bg-brownLight transition duration-300"
+            className="px-4 py-2 bg-emeraldGreen text-ivoryWhite text-lg rounded-full hover:bg-limeGreen transition duration-300 mb-4"
           >
             Volver
           </Link>

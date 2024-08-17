@@ -23,7 +23,7 @@ const Regalos = () => {
       </div>
       <Link 
         to="/lista-de-regalos" 
-        className="px-4 py-2 bg-emeraldGreen text-ivoryWhite text-lg rounded-full hover:bg-limeGreen transition duration-300"
+        className="px-4 py-2 bg-emeraldGreen text-ivoryWhite text-2xl rounded-full hover:bg-limeGreen transition duration-300"
       >
         Ver Lista de Regalos
       </Link>

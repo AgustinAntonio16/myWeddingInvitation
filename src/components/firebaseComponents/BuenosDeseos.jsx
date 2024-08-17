@@ -40,12 +40,12 @@ const BuenosDeseos = () => {
     style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl text-emeraldGreen mb-8 text-center">Buenos Deseos</h2>
+        <h2 className="text-4xl text-emeraldGreen mb-8 text-center">Un Mensaje desde el Corazón</h2>
         {deseos.length > 0 ? (
           <Slider {...settings}>
             {deseos.map((deseo, index) => (
-              <div key={index} className="p-6 bg-white bg-opacity-50 p-8 rounded-lg rounded-lg shadow-md text-center">
-                <p className="text-lg md:text-xl italic font-serif text-lightBrown mb-4">"{deseo.mensaje}"</p>
+              <div key={index} className="bg-white bg-opacity-80 p-8 rounded-lg rounded-lg shadow-md text-center">
+                <p className="text-xl md:text-xl italic font-serif text-lightBrown mb-4">"{deseo.mensaje}"</p>
                 <p className="text-lg md:text-xl font-semibold text-brown">- {deseo.nombre}</p>
               </div>
             ))}
@@ -56,7 +56,7 @@ const BuenosDeseos = () => {
         <div className="mt-8 text-center">
           <Link 
             to="/brindar-deseos" 
-            className="px-4 py-2 bg-emeraldGreen text-ivoryWhite text-lg rounded-full hover:bg-limeGreen transition duration-300"
+            className="px-4 py-2 bg-emeraldGreen text-ivoryWhite text-2xl rounded-full hover:bg-limeGreen transition duration-300"
           >
             Bríndanos tus buenos deseos
           </Link>

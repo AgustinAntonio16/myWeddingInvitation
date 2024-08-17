@@ -30,8 +30,8 @@ const CeremonyLocation = () => {
           <CeremonyMap />
         </div>
         <div className="text-center mt-8">
-          <Link to="/" className="px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300 text-xl">
-            Volver
+        <Link to="/" className="px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300">
+            Volver a la página principal
           </Link>
         </div>
       </div>

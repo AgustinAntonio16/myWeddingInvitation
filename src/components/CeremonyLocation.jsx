@@ -11,8 +11,8 @@ const CeremonyLocation = () => {
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-GreatVibes text-emeraldGreen">Ceremonia religiosa</h2>
-          <p className="text-lg text-lightBrown mt-4">
+          <h2 className="text-5xl font-GreatVibes text-emeraldGreen">Ceremonia religiosa</h2>
+          <p className="bg-white bg-opacity-70 text-2xl text-lightBrown mt-4">
             <a
               href="https://www.google.com/maps/place/Parroquia+de+Santa+Mar%C3%ADa+de+los+Remedios+de+Tonanitla/"
               title="Haz clic para ver el mapa en Google Maps"
@@ -25,12 +25,17 @@ const CeremonyLocation = () => {
             <br />
             20 de Noviemmbre S/N, Centro, 55789 Santa María Tonanitla, Méx.
           </p>
+          <p className="text-brown mt-4 text-2xl">
+              Sabado 14 de Diciembre 2024
+              <br />
+              15:45 hrs
+              </p>
         </div>
         <div className="mb-8">
           <CeremonyMap />
         </div>
         <div className="text-center mt-8">
-        <Link to="/" className="px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300">
+        <Link to="/" className="px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full hover:bg-limeGreen transition duration-300 text-2xl">
             Volver a la página principal
           </Link>
         </div>

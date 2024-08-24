@@ -54,7 +54,7 @@ const ListaDeRegalos = () => {
         <h2 className="text-5xl font-GreatVibes text-emeraldGreen mb-8 text-center">Lista de Regalos</h2>
         <div className="bg-white bg-opacity-50 shadow-md rounded-lg p-6">
           <p className="text-lg md:text-2xl font-serif text-lightBrown mb-4 text-center">
-            Para nosotros tu presencia es nuestro mejor regalo, pero si de tu corazón nace regalarnos algo estaremos infinitamente agradecidos.
+          Para nosotros, tu presencia es nuestro mejor regalo, pero si de tu corazón nace regalarnos algo, estaremos infinitamente agradecidos. Para facilitarte la elección, hemos preparado una lista de algunos regalos que nos harían muy felices. ¡Cualquier detalle será recibido con mucho cariño!
           </p>
           <ul className="list-disc list-inside text-xl md:text-2xl font-serif text-brown space-y-2">
             {regalos.map((regalo) => (

@@ -32,7 +32,6 @@ function App() {
     </Router>
 
     //<RegisterGuest/>
-    // <GenerateGiftList/>
   );
 }
 

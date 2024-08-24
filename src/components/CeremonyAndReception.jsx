@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { GOOGLE_MAPS_LINK_PARROQUIA, GOOGLE_MAPS_LINK_ACIENDA } from '../constants';
+import { GOOGLE_MAPS_IGLESIA_UBICACION, GOOGLE_MAPS_ACIENDA_UBICACION } from '../constants';
 import { Link } from 'react-router-dom';
 import LottieAnimation from './Animations/LottieAnimation';
 import animationData1 from '../assets/animations/church.json';
@@ -9,6 +9,25 @@ import SaveDate from './SaveDate';
 import backgroundImage from '../assets/Fondo/background.jpg';
 
 function CeremonyAndReception() {
+
+  const eventDetailsCeremonia = {
+    title: 'Ceremonia de la Boda de Yazmin y Agustin',
+    start: '20241214T154500Z',  // Formato: YYYYMMDDTHHmmssZ
+    end: '20241214T170000Z',    // Formato: YYYYMMDDTHHmmssZ
+    location: 'Iglesia de Santa María Tonanitla', // Dirección del evento
+    description: 'Ceremonia de la boda. Acompañanos a recibir el sacramento.',
+    notifications: [{ minutes: 30, method: 'popup' }],  // Notificación 30 minutos antes del evento
+  };
+
+  const eventDetailsRecepcion = {
+    title: 'Recepción Boda de Yazmin y Agustin',
+    start: '20241214T174500',  // Formato: YYYYMMDDTHHmmssZ
+    end: '20241215T000000Z',    // Formato: YYYYMMDDTHHmmssZ
+    location: 'Hacienda Azalaga', // Dirección del evento
+    description: 'Recepción de la boda. Acompañanos a celebrar esta nueva etapa de nuestravida.',
+    notifications: [{ minutes: 30, method: 'popup' }],  // Notificación 30 minutos antes del evento
+  };
+
   return (
     <Fragment>
       <div id="fh5co-couple-story" className="bg-lightIvory py-12 font-GreatVibes bg-cover bg-center"
@@ -19,7 +38,7 @@ function CeremonyAndReception() {
             <h2 className="text-5xl font-GreatVibes text-emeraldGreen">Ceremonia religiosa</h2>
             <p className="text-2xl text-lightBrown mt-4">
               <a
-                href= "https://www.google.com.mx/maps/place/Iglesia+de+Santa+Mar%C3%ADa+Tonanitla,+18+de+Noviembre,+Villas+de+Santa+Mar%C3%ADa,+Santa+Mar%C3%ADa+Tonanitla,+55789+Santa+Mar%C3%ADa+Tonanitla,+M%C3%A9x./@19.6876838,-99.0560563,17z/data=!3m1!4b1!4m6!3m5!1s0x85d1f2e301052ae1:0x9cb1d57d20d62f50!8m2!3d19.6877097!4d-99.0535672!16s%2Fg%2F11bvtjv2sc?entry=ttu"
+                href = {GOOGLE_MAPS_IGLESIA_UBICACION}
                 title="Haz clic para ver el mapa en Google Maps"
                 target="_blank"
                 rel="noreferrer"
@@ -30,6 +49,11 @@ function CeremonyAndReception() {
               <br />
               20 de Noviemmbre S/N, Centro, 55789 Santa María Tonanitla, Méx.
             </p>
+            <p className="text-brown mt-4 text-2xl">
+              Sabado 14 de Diciembre 2024
+              <br />
+              15:45 hrs
+              </p>
           </div>
           <div className="mb-12 flex flex-col items-center justify-center">
             <LottieAnimation
@@ -41,9 +65,12 @@ function CeremonyAndReception() {
               Ver Ubicación de la Ceremonia
             </Link>
             <SaveDate 
-              title="Ceremonia de la Boda de Yazmin y Agustin" 
-              start="20241214T153000Z" 
-              end="20241214T170000Z" 
+              title={eventDetailsCeremonia.title} 
+              start={eventDetailsCeremonia.start} 
+              end={eventDetailsCeremonia.end} 
+              location={eventDetailsCeremonia.location} 
+              description={eventDetailsCeremonia.description} 
+              notifications={eventDetailsCeremonia.notifications} 
             />
             <Link 
               to="/confirmar-asistencia" 
@@ -63,7 +90,7 @@ function CeremonyAndReception() {
             <h2 className="text-5xl font-GreatVibes text-emeraldGreen">Recepción</h2>
             <p className="text-2xl text-lightBrown mt-4">
               <a
-                href={GOOGLE_MAPS_LINK_ACIENDA}
+                href={GOOGLE_MAPS_ACIENDA_UBICACION}
                 title="Haz clic para ver el mapa en Google Maps"
                 target="_blank"
                 rel="noreferrer"
@@ -74,6 +101,11 @@ function CeremonyAndReception() {
               <br />
               Abundio Gómez S/N, La Urbana o La Chinampa, 55789 Santa María Tonanitla, Méx.
             </p>
+            <p className="text-brown mt-4 text-2xl">
+              Sabado 14 de Diciembre 2024
+              <br />
+              17:45 hrs
+              </p>
           </div>
           <div className="mb-12 flex flex-col items-center justify-center">
             <LottieAnimation animationData={animationData2} width={300} height={300} startFrame={0} endFrame={150} />
@@ -81,9 +113,12 @@ function CeremonyAndReception() {
               Ver Ubicación de la Recepción
             </Link>
             <SaveDate 
-              title="Recepción de la Boda de Yazmin y Agustin" 
-              start="20241214T173000Z" 
-              end="20241215T003000Z" 
+              title={eventDetailsRecepcion.title} 
+              start={eventDetailsRecepcion.start} 
+              end={eventDetailsRecepcion.end} 
+              location={eventDetailsRecepcion.location} 
+              description={eventDetailsRecepcion.description} 
+              notifications={eventDetailsRecepcion.notifications} 
             />
             <Link 
               to="/confirmar-asistencia" 

@@ -11,7 +11,7 @@ import backgroundImage from '../assets/Fondo/background.jpg';
 const ConfirmarAsistencia = () => {
   const [asistencia, setAsistencia] = useState('Asistiré :)');
   const [pasesConfirmados, setPasesConfirmados] = useState(1);
-  const [numeroPases, setNumeroPases] = useState(1);
+  const [numeroPases, setNumeroPases] = useState(1); // Estado para manejar el número de pases
   const [invitado, setInvitado] = useState(null);
   const [nombre, setNombre] = useState('');
   const [confirmacionRealizada, setConfirmacionRealizada] = useState(false);
@@ -26,9 +26,9 @@ const ConfirmarAsistencia = () => {
           const invitadoData = invitadoDoc.data();
           setInvitado(invitadoData);
           setNombre(invitadoData.nombre);
-          setNumeroPases(invitadoData.numeroPases);
+          setNumeroPases(invitadoData.numeroPases); // Cargar el número de pases desde Firestore
           setConfirmacionRealizada(isCeremony ? invitadoData.confirmacionRealizadaCeremonia : invitadoData.confirmacionRealizadaRecepcion);
-          setPasesConfirmados(invitadoData.numeroPasesConfirmados || 1);
+          setPasesConfirmados(invitadoData.numeroPasesConfirmados || 1); // Establecer el número de pases confirmados, si ya se ha guardado
         }
       }
     });
@@ -42,20 +42,9 @@ const ConfirmarAsistencia = () => {
       await updateDoc(userDocRef, {
         [isCeremony ? 'confirmacionCeremonia' : 'confirmacionRecepcion']: asistencia === 'Asistiré :)',
         [isCeremony ? 'confirmacionRealizadaCeremonia' : 'confirmacionRealizadaRecepcion']: true,
-        [isCeremony ? 'pasesConfirmadosCeremonia' : 'pasesConfirmadosRecepcion']: pasesConfirmados,
+        [isCeremony ? 'pasesConfirmadosCeremonia' : 'pasesConfirmadosRecepcion']: pasesConfirmados, // Guardar el número de pases confirmados
       });
       setConfirmacionRealizada(true);
-
-      // Envía la confirmación vía API de WhatsApp
-      const eventType = isCeremony ? 'Ceremonia' : 'Recepción';
-      const message = `${nombre} ha confirmado para ${eventType}. Número de pases: ${pasesConfirmados}. Asistencia: ${asistencia}`;
-      const apiUrl = `https://api.callmebot.com/whatsapp.php?phone=5215524426155&text=${encodeURIComponent(message)}&apikey=4318047`;
-
-      try {
-        await fetch(apiUrl);
-      } catch (error) {
-        console.error('Error al enviar la confirmación a través de WhatsApp:', error);
-      }
     }
   };
 
@@ -95,20 +84,18 @@ const ConfirmarAsistencia = () => {
                 <span>No me es posible :(</span>
               </button>
             </div>
-            {asistencia === 'Asistiré :)' && (
-              <div className="mb-4">
-                <label className="block text-lg mb-2">Número de Pases:</label>
-                <select
-                  value={pasesConfirmados}
-                  onChange={(e) => setPasesConfirmados(parseInt(e.target.value))}
-                  className="w-full px-4 py-2 border rounded-lg"
-                >
-                  {Array.from({ length: numeroPases }, (_, i) => i + 1).map(num => (
-                    <option key={num} value={num}>{num}</option>
-                  ))}
-                </select>
-              </div>
-            )}
+            <div className="mb-4">
+              <label className="block text-lg mb-2">Número de Pases:</label>
+              <select
+                value={pasesConfirmados}
+                onChange={(e) => setPasesConfirmados(parseInt(e.target.value))}
+                className="w-full px-4 py-2 border rounded-lg"
+              >
+                {Array.from({ length: numeroPases }, (_, i) => i + 1).map(num => (
+                  <option key={num} value={num}>{num}</option>
+                ))}
+              </select>
+            </div>
             <button
               onClick={handleConfirm}
               className="w-full px-4 py-2 bg-emeraldGreen text-ivoryWhite text-lg rounded-full hover:bg-limeGreen transition duration-300 mb-4"

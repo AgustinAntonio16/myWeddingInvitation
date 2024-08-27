@@ -16,22 +16,22 @@ import BrindarDeseos from './components/BrindarDeseos';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/ceremony-location" element={<CeremonyLocation />} />
-        <Route path="/reception-location" element={<ReceptionLocation />} />
-        <Route path="/regalos" element={<Regalos/>} />
-        <Route path="/lista-de-regalos" element={<ListaDeRegalos/>} />
-        <Route path="/musica" element={<Musica/>} />
-        <Route path="/dress-code" element={<DressCode/>} />
-        <Route path="/tips-notas" element={<TipsNotas/>} />
-        <Route path="/confirmar-asistencia" element={<ConfirmarAsistencia/>} />
-        <Route path="/brindar-deseos" element={<BrindarDeseos/>} />
-      </Routes>
-    </Router>
+    // <Router>
+    //   <Routes>
+    //     <Route path="/" element={<Home />} />
+    //     <Route path="/ceremony-location" element={<CeremonyLocation />} />
+    //     <Route path="/reception-location" element={<ReceptionLocation />} />
+    //     <Route path="/regalos" element={<Regalos/>} />
+    //     <Route path="/lista-de-regalos" element={<ListaDeRegalos/>} />
+    //     <Route path="/musica" element={<Musica/>} />
+    //     <Route path="/dress-code" element={<DressCode/>} />
+    //     <Route path="/tips-notas" element={<TipsNotas/>} />
+    //     <Route path="/confirmar-asistencia" element={<ConfirmarAsistencia/>} />
+    //     <Route path="/brindar-deseos" element={<BrindarDeseos/>} />
+    //   </Routes>
+    // </Router>
 
-    //<RegisterGuest/>
+    <RegisterGuest/>
   );
 }
 

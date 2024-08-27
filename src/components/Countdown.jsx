@@ -42,7 +42,7 @@ const Countdown = () => {
           </div>
           <div className="text-center">
             <span className="block text-6xl font-DancingScript">{timeLeft.minutes}</span>
-            <span className="block text-lg text-lightBrown font-Roboto">Min</span>
+            <span className="block text-lg text-lightBrown font-Roboto">Minutos</span>
           </div>
         </div>
       ) : (

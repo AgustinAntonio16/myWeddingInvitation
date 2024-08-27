@@ -38,7 +38,7 @@ const Countdown = () => {
           </div>
           <div className="text-center">
             <span className="block text-6xl font-DancingScript">{timeLeft.hours}</span>
-            <span className="block text-lg text-lightBrown font-Roboto">Hs</span>
+            <span className="block text-lg text-lightBrown font-Roboto">Horas</span>
           </div>
           <div className="text-center">
             <span className="block text-6xl font-DancingScript">{timeLeft.minutes}</span>

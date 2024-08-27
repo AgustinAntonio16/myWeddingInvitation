@@ -15,7 +15,7 @@ const DressCode = () => {
             Por favor, ninguna dama debe ir vestida de color blanco, ese está destinado exclusivamente para la novia.
           </li>
           <li>
-            Es una boda con temática mexicana, nos haría muy feliz que nos pudieran acompañar con algún vestuario típico, pero eso es meramente opcional.
+          Es una boda con temática mexicana, y nos haría muy felices que nos pudieran acompañar con algún vestuario típico, aunque es totalmente opcional. Si eligen hacerlo, nos encantaría que el traje refleje la elegancia del día y acorde a la ocasión.
           </li>
         </ul>
         <div className="mt-8">

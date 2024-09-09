@@ -23,9 +23,9 @@ const RegisterGuest = () => {
       // Guardar información en Firestore
       await setDoc(doc(db, "invitados", user.uid), {
         nombre: name,
-        confirmacionCeremonia: false,
+        confirmacionCeremonia: true,
         confirmacionRealizadaCeremonia: false,
-        confirmacionRecepcion: false,
+        confirmacionRecepcion: true,
         confirmacionRealizadaRecepcion: false,
         regalo: "",
         numeroPases: numPases,

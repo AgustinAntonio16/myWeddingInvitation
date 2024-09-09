@@ -14,6 +14,7 @@ const ConfirmarAsistencia = () => {
   const [invitado, setInvitado] = useState(null);
   const [nombre, setNombre] = useState('');
   const [confirmacionRealizada, setConfirmacionRealizada] = useState(false);
+  const [showModal, setShowModal] = useState(false); // Estado para el modal
   const location = useLocation();
   const { eventTitle, isCeremony } = location.state;
 
@@ -58,9 +59,22 @@ const ConfirmarAsistencia = () => {
     }
   };
 
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const handleModalConfirm = () => {
+    handleConfirm();
+    closeModal();
+  };
+
   return (
     <div className="min-h-screen bg-lightIvory py-12 flex flex-col items-center justify-center font-GreatVibes bg-cover bg-center"
-    style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <div className="w-full max-w-md p-8 bg-lightIvory bg-opacity-50 p-8 rounded-lg shadow-md">
         <h2 className="text-4xl text-emeraldGreen mb-8 text-center">{eventTitle}</h2>
@@ -109,7 +123,7 @@ const ConfirmarAsistencia = () => {
               </div>
             )}
             <button
-              onClick={handleConfirm}
+              onClick={openModal} // Abrir el modal en lugar de confirmar directamente
               className="w-full px-4 py-2 bg-emeraldGreen text-ivoryWhite text-lg rounded-full hover:bg-limeGreen transition duration-300 mb-4"
             >
               Confirmar Asistencia
@@ -126,6 +140,33 @@ const ConfirmarAsistencia = () => {
           </Link>
         </div>
       </div>
+
+      {/* Modal de confirmación */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg text-center">
+            <h2 className="text-2xl text-emeraldGreen mb-4">¿Estás seguro de tu selección?</h2>
+            <p className="mb-4">Has elegido: {asistencia}</p>
+            {asistencia === 'Asistiré :)' && (
+              <p>Número de pases confirmados: {pasesConfirmados}</p>
+            )}
+            <div className="mt-6 flex justify-center space-x-4">
+              <button
+                onClick={handleModalConfirm}
+                className="px-4 py-2 bg-emeraldGreen text-ivoryWhite rounded-full"
+              >
+                Confirmar
+              </button>
+              <button
+                onClick={closeModal}
+                className="px-4 py-2 bg-red-500 text-white rounded-full"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
